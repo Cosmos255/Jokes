@@ -15,7 +15,7 @@ app.get('/', (req,res) =>{
 
 app.get('/Jokes', getAllJokes)
 
-
+app.post('/Jokes', addJokes)
 
 function getAllJokes(req,res){
     let dir = fs.readdirSync(dataPath)
@@ -39,7 +39,7 @@ function addJokes(req,res){
         let joke = JSON.parse(data)
         joke.likes = 0
         joke.dislikes = 0
-        
+
         let filePath = path.join(dataPath, joke.id + '.json')
         fs.writeFileSync(filePath, JSON.stringify(joke))
         res.end()
