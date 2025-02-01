@@ -1,0 +1,19 @@
+{
+  "name": "jokes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cosmos255/Jokes.git"
+  },
+  "author": "Cosmos255",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cosmos255/Jokes/issues"
+  },
+  "homepage": "https://github.com/Cosmos255/Jokes#readme"
+}
