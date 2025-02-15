@@ -1,7 +1,5 @@
-*.tsx
 *.json
 
 data/
 node_modules/
 tsconfig.json
-index.ts
