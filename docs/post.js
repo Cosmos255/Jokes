@@ -34,59 +34,44 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var url = "http://localhost:3000/jokes";
-var button = document.getElementById("submit");
-var like = document.getElementById("like");
-var dislike = document.getElementById("dislike");
-var jokes = [];
-function main() {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, data, x, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch(url, {
-                            method: "GET",
-                            headers: new Headers({
-                                "ngrok-skip-browser-warning": "69420",
-                            }),
-                        })];
-                case 1:
-                    response = _a.sent();
-                    if (!response.ok) {
-                        throw new Error("Server is down");
-                    }
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    data = _a.sent();
-                    jokes = data.map(function (x) { return ({
-                        id: x.id,
-                        joke: x.joke,
-                        punchine: x.punchline,
-                        likes: x.likes,
-                        dislikes: x.dislikes
-                    }); });
-                    console.log(jokes);
-                    for (x in jokes) {
-                        console.log(x);
-                    }
-                    console.log(jokes[0].id);
-                    console.log(jokes);
-                    return [3 /*break*/, 4];
-                case 3:
-                    error_1 = _a.sent();
-                    console.error(error_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
-            }
-        });
+var _this = this;
+var addJoke = document.getElementById("addJoke");
+var joke = document.getElementById("joke");
+var punchline = document.getElementById("punchline");
+addJoke.addEventListener("click", function () { return __awaiter(_this, void 0, void 0, function () {
+    var Jokeadd_data, response, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                if (joke.value === "" || punchline.value === "") {
+                    throw new Error("Please fill out both fields");
+                }
+                Jokeadd_data = {
+                    Joke: joke.value,
+                    Punchline: punchline.value
+                };
+                return [4 /*yield*/, fetch("https://739c-188-237-141-73.ngrok-free.app", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(Jokeadd_data)
+                    })];
+            case 1:
+                response = _a.sent();
+                if (response.ok) {
+                    window.alert("Joke added successsfully");
+                }
+                else {
+                    alert("Joke not added");
+                }
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _a.sent();
+                console.error("Error submiting data server might be down" + error_1);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
     });
-}
-main();
-for (var x = 0; x < jokes.length; x++) {
-    if (jokes.id[x] === 1) {
-        console.log(jokes[x]);
-    }
-}
-var requestedJoke = jokes.find(function (x) { return x.id === 1; });
+}); });

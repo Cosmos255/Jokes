@@ -7,7 +7,17 @@ let jokes:any = [];
 
 async function main() {
     try{
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            method: "GET",
+            headers: new Headers({
+                "ngrok-skip-browser-warning": "69420",
+            }),
+        });
+
+        if(!response.ok){
+            throw new Error("Server is down");
+        }
+
         const data:any = await response.json();
 
         jokes = data.map(x => ({
