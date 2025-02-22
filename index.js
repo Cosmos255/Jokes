@@ -2,12 +2,14 @@ const { error } = require('console');
 const express = require('express')
 const fs = require('fs')
 const path = require('path')
+const cors = require('cors')    
 
 const app = express();
 
 const dataPath = path.join(__dirname, '/Data')
 
 app.use(express.json())
+app.use(cors())
 
 class Joke{
     constructor(setup, punchline){
