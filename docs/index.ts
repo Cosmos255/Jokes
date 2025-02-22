@@ -3,13 +3,14 @@ const button = document.getElementById("submit") as HTMLButtonElement;
 const like =   document.getElementById("like")  as HTMLButtonElement;
 const dislike =   document.getElementById("dislike") as HTMLButtonElement;
 
+let jokes:any = [];
 
 async function main() {
     try{
         const response = await fetch(url);
         const data:any = await response.json();
 
-        let jokes = data.map(x => ({
+        jokes = data.map(x => ({
             id: x.id,
             joke: x.joke,
             punchine: x.punchline,
@@ -27,8 +28,6 @@ async function main() {
         
         console.log(jokes);
 
-
-
         
     }catch(error){
         console.error(error);
@@ -36,3 +35,13 @@ async function main() {
 
 
 }
+
+main();
+
+for(let x = 0; x < jokes.length; x++){
+    if(jokes.id[x] === 1){
+        console.log(jokes[x]);
+    }
+}
+
+let requestedJoke = jokes.find(x => x.id === 1);
