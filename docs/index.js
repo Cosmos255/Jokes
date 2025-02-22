@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var url = "http://localhost:3000/jokes";
+var url = "https://739c-188-237-141-73.ngrok-free.app/jokes";
 var button = document.getElementById("submit");
 var like = document.getElementById("like");
 var dislike = document.getElementById("dislike");

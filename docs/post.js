@@ -51,7 +51,7 @@ addJoke.addEventListener("click", function () { return __awaiter(_this, void 0, 
                     Joke: joke.value,
                     Punchline: punchline.value
                 };
-                return [4 /*yield*/, fetch("https://739c-188-237-141-73.ngrok-free.app", {
+                return [4 /*yield*/, fetch("https://739c-188-237-141-73.ngrok-free.app/jokes", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
