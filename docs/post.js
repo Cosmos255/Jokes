@@ -43,7 +43,10 @@ addJoke.addEventListener("click", function () { return __awaiter(_this, void 0, 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
+                console.log("Button clicked");
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
                 if (joke.value === "" || punchline.value === "") {
                     throw new Error("Please fill out both fields");
                 }
@@ -58,7 +61,7 @@ addJoke.addEventListener("click", function () { return __awaiter(_this, void 0, 
                         },
                         body: JSON.stringify(Jokeadd_data)
                     })];
-            case 1:
+            case 2:
                 response = _a.sent();
                 if (response.ok) {
                     window.alert("Joke added successsfully");
@@ -66,12 +69,12 @@ addJoke.addEventListener("click", function () { return __awaiter(_this, void 0, 
                 else {
                     alert("Joke not added");
                 }
-                return [3 /*break*/, 3];
-            case 2:
+                return [3 /*break*/, 4];
+            case 3:
                 error_1 = _a.sent();
                 console.error("Error submiting data server might be down" + error_1);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); });

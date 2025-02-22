@@ -3,6 +3,7 @@ const joke = document.getElementById("joke") as HTMLInputElement;
 const punchline = document.getElementById("punchline") as HTMLInputElement;
 
 addJoke.addEventListener("click", async () => {
+    console.log("Button clicked");
     try{
         if(joke.value === "" || punchline.value === ""){
             throw new Error("Please fill out both fields");
