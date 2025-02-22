@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/jokes";
+const url = "https://739c-188-237-141-73.ngrok-free.app/jokes";
 const button = document.getElementById("submit") as HTMLButtonElement;
 const like =   document.getElementById("like")  as HTMLButtonElement;
 const dislike =   document.getElementById("dislike") as HTMLButtonElement;

@@ -8,11 +8,11 @@ addJoke.addEventListener("click", async () => {
             throw new Error("Please fill out both fields");
         }
         const Jokeadd_data = {
-            Joke: joke.value,
-            Punchline: punchline.value
+            Joke: joke.value.trim(),
+            Punchline: punchline.value.trim()
         };
 
-        const response = await fetch("https://739c-188-237-141-73.ngrok-free.app",{
+        const response = await fetch("https://739c-188-237-141-73.ngrok-free.app/jokes",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
