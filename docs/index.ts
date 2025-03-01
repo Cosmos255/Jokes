@@ -1,9 +1,59 @@
 const url = "https://739c-188-237-141-73.ngrok-free.app/jokes";
-const button = document.getElementById("submit") as HTMLButtonElement;
-const like =   document.getElementById("like")  as HTMLButtonElement;
-const dislike =   document.getElementById("dislike") as HTMLButtonElement;
+const joke_likes =   document.getElementById("like") as HTML;
+const joke_dislikes =   document.getElementById("dislike") as HTMLElement;
+const joke_text = document.getElementById("joke") as HTMLInputElement;
+const joke_punchline = document.getElementById("punchline") as HTMLInputElement;
+const next_joke = document.getElementById("next") as HTMLButtonElement;
 
 let jokes:any = [];
+
+let current_joke = jokes[Math.floor(Math.random() * jokes.length)];
+
+
+class Joke{
+    id: number;
+    joke: string;
+    punchline: string;
+    likes: number;
+    dislikes: number;
+    constructor(id: number, joke: string, punchline: string, likes: number, dislikes: number){
+        this.id = id;
+        this.joke = joke;
+        this.punchline = punchline;
+        this.likes = likes;
+        this.dislikes = dislikes;
+    }
+
+    setJoke(){
+        joke_text.innerHTML = this.joke;
+        joke_punchline.innerHTML = this.punchline;
+        joke_likes.innerHTML = this.likes.toString();
+        joke_dislikes.innerHTML = this.dislikes.toString();
+    }
+
+    like(){
+        this.likes++;
+        this.setJoke();
+        this.patchJoke();
+    }
+
+    dislike(){
+        this.dislikes++;
+        this.setJoke();
+        this.patchJoke();
+    }
+
+    static nextJoke(){
+        current_joke = jokes[Math.floor(Math.random() * jokes.length)];
+        current_joke.setJoke();
+    }
+
+    patchJoke(){
+        
+    }
+
+}
+
 
 async function main() {
     try{
@@ -20,13 +70,14 @@ async function main() {
 
         const data:any = await response.json();
 
-        jokes = data.map(x => ({
-            id: x.id,
-            joke: x.joke,
-            punchine: x.punchline,
-            likes: x.likes,
-            dislikes: x.dislikes
-        }));
+        jokes = data.map(x => new Joke(x.id, x.setup, x.punchline, x.likes, x.dislikes));
+        
+        if(jokes.length === 0){
+            throw new Error("No jokes found");
+        }else if(jokes.length > 0){
+            current_joke = jokes[Math.floor(Math.random() * jokes.length)];
+            current_joke.setJoke();
+        }
 
         console.log(jokes);
 
@@ -54,4 +105,7 @@ for(let x = 0; x < jokes.length; x++){
     }
 }
 
-let requestedJoke = jokes.find(x => x.id === 1);
+
+next_joke.addEventListener("click", Joke.nextJoke);
+joke_likes.addEventListener("click", current_joke.like);
+joke_dislikes.addEventListener("click", current_joke.dislike);

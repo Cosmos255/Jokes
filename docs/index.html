@@ -17,9 +17,9 @@
     <dialog id="d">
         <form id="add-joke-form">
             <label for="question">Joke</label>
-            <input type="text" id="joke" name="question" required>
+            <input type="text" id="add_joke" name="question" required>
             <label for="answer">Punchline</label>
-            <input type="text" id="punchline" name="answer" required>
+            <input type="text" id="add_punchline" name="answer" required>
             <button id="addJoke" type="button">Add Joke</button>
         </form>
     </dialog>
@@ -30,11 +30,12 @@
     </dialog>
 
     <div class="card">
-        <h2>Why don't scientists trust atoms?</h2>
-        <p>Because they make up everything!</p>
+        <h2 id="joke"></h2>
+        <p id="punchline"></p>
         <div class="buttons">
-            <button class="like">Like</button>
-            <button class="dislike">Dislike</button>
+            <button class="like" id="like">Like</button>
+            <buttom class="next" id="next">Next</buttom>
+            <button class="dislike" id="dislike">Dislike</button>
         </div>
         <button class="add-joke" onclick="d.showModal()">Add Joke</button>
     </div>

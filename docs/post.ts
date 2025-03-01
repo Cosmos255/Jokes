@@ -1,6 +1,6 @@
 const addJoke = document.getElementById("addJoke") as HTMLButtonElement;
-const joke = document.getElementById("joke") as HTMLInputElement;
-const punchline = document.getElementById("punchline") as HTMLInputElement;
+const joke = document.getElementById("add_joke") as HTMLInputElement;
+const punchline = document.getElementById("add_punchline") as HTMLInputElement;
 
 addJoke.addEventListener("click", async () => {
     console.log("Button clicked");
